@@ -4,8 +4,22 @@ class ArticlesController < ApplicationController
   end
 
   def show 
-    @articles =Artical.find(params[:id])
+    @article =Artical.find(params[:id])
   end
 
+  def new
+    @article =Artical.new 
+  end
+
+  def create
+    @article=Artical.new(title:"..." ,body:"...")
+
+    if @article.save
+      redirect_to @article
+    else
+      render:new
+    end
+  end
   
+
 end
